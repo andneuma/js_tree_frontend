@@ -5,6 +5,4 @@ class Treeitem {
         this.children = children;
         this.parents = parents;
     }
-   // get id() { return id; }
-
 }

@@ -1,60 +1,41 @@
 class TreeItemRepository{
-    constructor(treeItemsQuery){
-        this.treeItemsQuery = treeItemsQuery;
-		this.treeItems = [];
+	constructor(treeItemsQuery){
+		this.treeItemsQuery = treeItemsQuery;
+		this.treeItems = {}; // could be crazy new es6 Map type
 		this.fetchTreeItems();	
-    }
+	}
 
-    fetchTreeItems(){
-      	var self = this;
-		 console.log('lets fetch this shit');
-        //TODO add http error handling 
-		jQuery.get(this.treeItemsQuery, function(data) {
-			self.treeItems = self.convertJsonToTreeItems(data);
+	fetchTreeItems(){
+		//TODO add http error handling remove unnessecarry object parsing
+		jQuery.get(this.treeItemsQuery, (data) => {
+			this.convertJsonToTreeItems(data);
+			this.createMeshNet();
+			renderStuff();
+		}).fail(
+			() => {console.log('Request tget data failed')}
+			);
+	}
+
+	convertJsonToTreeItems(rawJson){
+		// could this be a static function which gets a json set and class def?
+		rawJson.forEach((jsonItem) => {
+			this.treeItems[jsonItem.id] = 
+				new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);
 		});
-    }
-    
-    convertJsonToTreeItems(rawJson){
-    // could this be a static function which gets a json set and class def?
-	 	return rawJson.map( function(jsonItem){
-			return new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);
-		});	
-    }
+	}
 
 
-    createMeshNet(){
+	createMeshNet() {
 
-    }
+		for (var i = Object.keys(this.treeItems).length - 1; i >= 0; i--) {
+			var treeItemId = Object.keys(this.treeItems)[i];
+			var treeItem = this.treeItems[treeItemId];
+			treeItem.parents = this.findRelatedObjectById(treeItem.parents);
+			treeItem.children= this.findRelatedObjectById(treeItem.children);
+		}
+	}
+
+	findRelatedObjectById(ids) {
+		return ids.map((id) => { return this.treeItems[id] } );
+	}
 }
-
-//function findRelated(relatedIds) {
-//
-//    var matches = [];
-//
-//    for (var i = relatedIds.length - 1; i >= 0; i--) {
-//
-//        for (var j = liste.length - 1; j >= 0; j--) {
-//            if (liste[j].id == relatedIds[i]) {
-//                matches.push(liste[j]);
-//            }
-//        };
-//
-//    };
-//
-//    return matches
-//}
-//
-//
-//
-//for (var i = liste.length - 1; i >= 0; i--) {
-//
-//    var newChildren = findRelated(liste[i].children);
-//
-//    liste[i].children = newChildren;
-//
-//    var newParents = findRelated(liste[i].parents);
-//
-//    liste[i].parents = newParents;
-//};
-
-

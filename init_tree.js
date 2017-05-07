@@ -1,12 +1,10 @@
-console.log('Yeah!')
-
-var liste = [
-     new Treeitem("1-1","balbla",["2-2","2-1"],[]),
-     new Treeitem("1-2","balbla",["2-2","2-1"], []),
-     new Treeitem("2-2","balbla",[], ["1-1"]),
-     new Treeitem("2-1","balbla",[], ["1-2"])
-     ];
-
-console.log(liste)
-
 var treeItemRepo = new TreeItemRepository({url: 'http://lpkb.menkent.uberspace.de/bring_it_on' })
+
+var renderStuff = function() {
+	jQuery('.parent').text(treeItemRepo.treeItems["0.1"].text);
+	jQuery('.child1').text(treeItemRepo.treeItems["0.1"].children[0].text);
+	jQuery('.child2').text(treeItemRepo.treeItems["0.1"].children[1].text);
+}
+
+jQuery(document).ready(function() {
+});
