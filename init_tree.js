@@ -1,10 +1,12 @@
 var treeItemRepo = new TreeItemRepository({url: 'http://lpkb.menkent.uberspace.de/bring_it_on' })
 
-var renderStuff = function() {
-	jQuery('.parent').text(treeItemRepo.treeItems["0.1"].text);
-	jQuery('.child1').text(treeItemRepo.treeItems["0.1"].children[0].text);
-	jQuery('.child2').text(treeItemRepo.treeItems["0.1"].children[1].text);
-}
-
 jQuery(document).ready(function() {
+  // Render next / previous items on click
+  jQuery('.next').on('click', function(){
+    getNext(this.current_item).render();
+  });
+
+  jQuery('.back').on('click', function(){
+    getPrevious(this.current_item).render();
+  });
 });
