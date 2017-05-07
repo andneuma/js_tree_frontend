@@ -6,18 +6,18 @@ class TreeItemRepository{
     }
 
     fetchTreeItems(){
-      	var func =  this.convertJsonToTreeItems
+      	var self = this;
 		 console.log('lets fetch this shit');
         //TODO add http error handling 
 		jQuery.get(this.treeItemsQuery, function(data) {
-			func(data);
+			self.treeItems = self.convertJsonToTreeItems(data);
 		});
     }
     
     convertJsonToTreeItems(rawJson){
     // could this be a static function which gets a json set and class def?
-	 	treeItems = rawJson.map( function(jsonItem){
-			new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);		
+	 	return rawJson.map( function(jsonItem){
+			return new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);
 		});	
     }
 
