@@ -5,8 +5,15 @@ class TreeItemRepository{
     this.serialiseDirectly();
   }
 
+  resetTree() {
+    var firstItemId = Object.keys(this.treeItems)[0];
+    var firstItem = this.treeItems[firstItemId];
+    this.currentItem = firstItem;
+    this.currentItem.renderSelf();
+  }
+
   // Fetch JSON from external ressource (makes no sense for static data)
-  fetchTreeItems(){
+  fetchTreeItems() {
     //TODO add http error handling remove unnessecarry object parsing
     jQuery.get(this.treeItemsQuery, (data) => {
       this.convertJsonToTreeItems(data);
@@ -21,16 +28,14 @@ class TreeItemRepository{
     this.convertJsonToTreeItems(this.rawData);
     this.createMeshNet();
     // Set current item initally
-    var firstItemId = Object.keys(this.treeItems)[0];
-    var firstItem = this.treeItems[firstItemId];
-    this.currentItem = firstItem;
+    this.resetTree();
   }
 
   convertJsonToTreeItems(rawJson){
     // could this be a static function which gets a json set and class def?
     rawJson.forEach((jsonItem) => {
       this.treeItems[jsonItem.id] = 
-        new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);
+        new Treeitem(jsonItem.id, jsonItem.statement, jsonItem.choices, jsonItem.parents);
     });
   }
 
@@ -39,7 +44,6 @@ class TreeItemRepository{
       var treeItemId = Object.keys(this.treeItems)[i];
       var treeItem = this.treeItems[treeItemId];
       treeItem.parents = this.findRelatedObjectById(treeItem.parents);
-      treeItem.children= this.findRelatedObjectById(treeItem.children);
     }
   }
 

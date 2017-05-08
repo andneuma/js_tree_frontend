@@ -1,36 +1,37 @@
-class Treeitem {
-  constructor(id, text, children, parents) {
-    this.id = id;
+class ChoiceItem{
+  constructor(text, nextItemId) {
     this.text = text;
-    this.children = children;
+    this.nextItemId = nextItemId
+  }
+}
+
+class Treeitem {
+  constructor(id, text, choices, parents) {
+    this.id = id;
+    this.statement = text;
+    this.choices = choices;
     this.parents = parents;
   }
 
-  getNextItem() {
-    this.children[0];
-  }
-
-  getPreviousItem() {
-    this.parents[0];
-  }
-
   renderSelf() {
-    // Draw parent (e.g. question)
+    // Draw statement
     var parentDiv = jQuery('.parent');
     parentDiv.find('.parent_heading').text('Parent ID: ' + this.id);
-    parentDiv.find('.parent_text').text(this.text);
+    parentDiv.find('.parent_text').text(this.statement);
 
-    // Draw children (e.g. choices)
-    var choicesTemplate = jQuery('.choice');
+    // Create div template
+    var choiceTemplate = jQuery('.choice-template');
+    jQuery('.choice').remove();
 
-    this.children.forEach(function(choice) {
-      var choiceDiv = choicesTemplate.clone();
-      choiceDiv.find('.choice_heading').text('Node ID: ' + choice.id);
-      choiceDiv.attr('item-id', choice.id);
+    // Remove all choices
+    // Draw choices
+    this.choices.forEach(function(choice) {
+      var choiceDiv = jQuery('.choice-template').clone().removeClass('choice-template').addClass('choice');
+      choiceDiv.attr('next-item-id', choice.nextItemId);
       choiceDiv.find('.choice_text').text(choice.text);
-      choiceDiv.insertAfter(choicesTemplate).show();
+      choiceDiv.insertAfter(choiceTemplate).show();
     });
 
-    choicesTemplate.remove();
+    choiceTemplate.hide();
   }
 }
