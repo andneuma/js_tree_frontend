@@ -6,8 +6,9 @@ class ChoiceItem{
 }
 
 class Treeitem {
-  constructor(id, text, choices, parents) {
+  constructor(id, text, heading, choices, parents) {
     this.id = id;
+    this.heading = heading;
     this.statement = text;
     this.choices = choices;
     this.parents = parents;
@@ -16,7 +17,7 @@ class Treeitem {
   renderSelf() {
     // Draw statement
     var parentDiv = jQuery('.parent');
-    parentDiv.find('.parent_heading').text('Parent ID: ' + this.id);
+    parentDiv.find('.parent_heading').text(this.heading);
     parentDiv.find('.parent_text').text(this.statement);
 
     // Create div template

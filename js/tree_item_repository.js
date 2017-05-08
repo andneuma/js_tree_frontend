@@ -35,7 +35,7 @@ class TreeItemRepository{
     // could this be a static function which gets a json set and class def?
     rawJson.forEach((jsonItem) => {
       this.treeItems[jsonItem.id] = 
-        new Treeitem(jsonItem.id, jsonItem.statement, jsonItem.choices, jsonItem.parents);
+        new Treeitem(jsonItem.id, jsonItem.statement, jsonItem.heading, jsonItem.choices, jsonItem.parents);
     });
   }
 
