@@ -1,11 +1,11 @@
 class TreeItemRepository{
-  constructor(treeItemsQuery){
-    this.treeItemsQuery = treeItemsQuery;
+  constructor(data){
+    this.rawData = data;
     this.treeItems = {}; // could be crazy new es6 Map type
-    this.fetchTreeItems();	
-    this.current_item = undefined;
+    this.serialiseDirectly();
   }
 
+  // Fetch JSON from external ressource (makes no sense for static data)
   fetchTreeItems(){
     //TODO add http error handling remove unnessecarry object parsing
     jQuery.get(this.treeItemsQuery, (data) => {
@@ -16,6 +16,16 @@ class TreeItemRepository{
       );
   }
 
+  // Serialise JSON data directly if ressource passed is already JSON
+  serialiseDirectly(){
+    this.convertJsonToTreeItems(this.rawData);
+    this.createMeshNet();
+    // Set current item initally
+    var firstItemId = Object.keys(this.treeItems)[0];
+    var firstItem = this.treeItems[firstItemId];
+    this.currentItem = firstItem;
+  }
+
   convertJsonToTreeItems(rawJson){
     // could this be a static function which gets a json set and class def?
     rawJson.forEach((jsonItem) => {
@@ -23,7 +33,6 @@ class TreeItemRepository{
         new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);
     });
   }
-
 
   createMeshNet() {
     for (var i = Object.keys(this.treeItems).length - 1; i >= 0; i--) {
@@ -36,13 +45,5 @@ class TreeItemRepository{
 
   findRelatedObjectById(ids) {
     return ids.map((id) => { return this.treeItems[id] } );
-  }
-
-  getNext(item) {
-    item.children[0];
-  }
-
-  getPrevious(item) {
-    item.parents[0];
   }
 }

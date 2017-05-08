@@ -6,9 +6,31 @@ class Treeitem {
     this.parents = parents;
   }
 
-  render() {
-    jQuery('.parent').text(this.text);
-    jQuery('.child1').text(this.children[0].text);
-    jQuery('.child2').text(this.children[1].text);
+  getNextItem() {
+    this.children[0];
+  }
+
+  getPreviousItem() {
+    this.parents[0];
+  }
+
+  renderSelf() {
+    // Draw parent (e.g. question)
+    var parentDiv = jQuery('.parent');
+    parentDiv.find('.parent_heading').text('Parent ID: ' + this.id);
+    parentDiv.find('.parent_text').text(this.text);
+
+    // Draw children (e.g. choices)
+    var choicesTemplate = jQuery('.choice');
+
+    this.children.forEach(function(choice) {
+      var choiceDiv = choicesTemplate.clone();
+      choiceDiv.find('.choice_heading').text('Node ID: ' + choice.id);
+      choiceDiv.attr('item-id', choice.id);
+      choiceDiv.find('.choice_text').text(choice.text);
+      choiceDiv.insertAfter(choicesTemplate).show();
+    });
+
+    choicesTemplate.remove();
   }
 }

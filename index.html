@@ -6,9 +6,9 @@
 
 		<!-- Bootstrap-->
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" src="./vendor/bootstrap/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css">
 		<!-- Optional theme -->
-		<link rel="stylesheet" src="./vendor/bootstrap/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" src="./vendor/bootstrap/bootstrap-theme.min.css">
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="./vendor/bootstrap/bootstrap.min.js"></script>
 
@@ -16,32 +16,32 @@
 		<!--TODO move imports to js import file -->
 		<script type="text/javascript" charset="utf-8" src="js/tree_item.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/tree_item_repository.js"></script>
+
+    <title>JSON Tree loader</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>This is some fancy tree test</h1>
+      <div class="row">    
+        <div class="col-xs-12 parent">
+          <h2 class="parent_heading"></h2>
+          <div class = "parent_text"></div>
+        </div>
+      </div>
+      <div class="row choices">
+        <div class="col-xs-6 choice" style="display: none">
+          <h4 class="choice_heading"></h4>
+          <div class = "choice_text">I'm only the template</div>
+        </div>
+      </div>
+      <div class="button-bar">
+        <div class="col-xs-6 col-xs-offset-5">
+          <button class='back' type="button">Zurück</button>
+        </div>
+      </div>
+    </div>
+
 		<script type="text/javascript" charset="utf-8" src="js/init_tree.js"></script>
 
-		<title>JSON Tree loader</title>
-	</head>
-	<body>
-		<h1>This is some fancy tree test</h1>
-		<div class="row">    
-			<div class="col-xs-12">
-				<h2>Question</h2>
-				<div class = "parent"></div>
-			</div>
-		</div>
-		<div class="row answers">    
-			<div class="col-xs-6">
-				<h4> Answer 1</h4>
-				<div class = "child1"></div>
-			</div>
-			<div class="col-xs-6">
-				<h4> Answer 2</h4>
-				<div class = "child2"></div>
-			</div>
-		</div>
-		<div class="button-bar">
-			<div class="col-xs-6 col-xs-offset-5">
-				<button class='back' type="button">Zurück</button>
-			</div>
-		</div>
 	</body>
 </html>
