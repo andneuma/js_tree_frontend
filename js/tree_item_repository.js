@@ -3,6 +3,7 @@ class TreeItemRepository{
     this.rawData = data;
     this.treeItems = {}; // could be crazy new es6 Map type
     this.serialiseDirectly();
+    this.history = [];
   }
 
   resetTree() {
@@ -10,6 +11,13 @@ class TreeItemRepository{
     var firstItem = this.treeItems[firstItemId];
     this.currentItem = firstItem;
     this.currentItem.renderSelf();
+  }
+
+  goBack() {
+    var previousItem = this.history[this.history.length - 1];
+    this.currentItem = previousItem;
+    this.currentItem.renderSelf();
+    this.history.pop(previousItem);
   }
 
   // Fetch JSON from external ressource (makes no sense for static data)

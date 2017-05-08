@@ -6,7 +6,7 @@ class ChoiceItem{
 }
 
 class Treeitem {
-  constructor(id, text, heading, choices, parents) {
+  constructor(id, text, heading, choices, parents, tree) {
     this.id = id;
     this.heading = heading;
     this.statement = text;
@@ -51,6 +51,12 @@ class Treeitem {
       choiceDiv.insertAfter(choiceTemplate).show();
     });
 
+    // Hide elements
     choiceTemplate.hide();
+    if (this.parents.length === 0) {
+      jQuery('.back').hide();
+    } else {
+      jQuery('.back').show();
+    }
   }
 }

@@ -60,10 +60,20 @@ jQuery(document).ready(function() {
   jQuery('.choices').on('click', '.choice', function() {
     var nextItemId = jQuery(this).attr('next-item-id');
     var nextItem = treeItemRepo.treeItems[nextItemId];
+    var currentItem = treeItemRepo.currentItem;
+    treeItemRepo.history.push(currentItem);
     treeItemRepo.currentItem = nextItem;
     nextItem.renderSelf();
   });
 
+  jQuery('.back').on('click', function() {
+    var history = treeItemRepo.history;
+    if (history.length > 0) {
+      treeItemRepo.goBack();
+    }
+  });
+
+  // Go back to start...
   jQuery('.reset').on('click', function() {
     treeItemRepo.resetTree();
   });
