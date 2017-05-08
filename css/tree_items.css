@@ -1,0 +1,21 @@
+.parent {
+  margin-bottom: 20px;
+}
+
+.choice {
+  border-radius: 6px;
+  border: 1px grey solid;
+  padding: 10px;
+  margin-top: 5px;
+  width: 96%;
+  left: 2%;
+}
+
+.choice:hover {
+  background-color: #9089ec;
+  cursor: pointer;
+}
+
+.button-bar {
+  margin-top: 20px;
+}

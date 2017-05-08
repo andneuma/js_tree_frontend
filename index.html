@@ -1,21 +1,22 @@
 <html>
-	<head>
-		<meta charset="utf-8">
-		<!-- jQuery  -->
-		<script src="./vendor/jquery/jquery.min.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <!-- jQuery  -->
+    <script src="./vendor/jquery/jquery.min.js"></script>
 
-		<!-- Bootstrap-->
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css">
-		<!-- Optional theme -->
-		<link rel="stylesheet" src="./vendor/bootstrap/bootstrap-theme.min.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="./vendor/bootstrap/bootstrap.min.js"></script>
+    <!-- Bootstrap-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="./vendor/bootstrap/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="./vendor/bootstrap/bootstrap.min.js"></script>
 
-		<!-- OUR SHIT-->
-		<!--TODO move imports to js import file -->
-		<script type="text/javascript" charset="utf-8" src="js/tree_item.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/tree_item_repository.js"></script>
+    <!-- OUR SHIT-->
+    <!--TODO move imports to js import file -->
+    <link rel="stylesheet" href="./css/tree_items.css">
+    <script type="text/javascript" charset="utf-8" src="js/tree_item.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/tree_item_repository.js"></script>
 
     <title>JSON Tree loader</title>
   </head>
@@ -30,14 +31,16 @@
       </div>
       <div class="row">
         <div class="choices">
-          <div class="col-xs-6 choice-template">
+          <div class="col-xs-12 choice-template text-center">
             <div class="choice_text">I'm the template</div>
           </div>
         </div>
       </div>
-      <div class="button-bar">
-        <div class="col-xs-6 col-xs-offset-5">
-          <button class='back' type="button">Zurück</button>
+      <div class="row">    
+        <div class="button-bar">
+          <div class="col-xs-6 col-xs-offset-5">
+            <button class='btn btn-default reset' type="button">Zurücksetzen</button>
+          </div>
         </div>
       </div>
     </div>

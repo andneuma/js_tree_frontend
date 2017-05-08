@@ -57,7 +57,7 @@ jQuery(document).ready(function() {
     nextItem.renderSelf();
   });
 
-  jQuery('.back').on('click', function() {
+  jQuery('.reset').on('click', function() {
     treeItemRepo.resetTree();
   });
 });
