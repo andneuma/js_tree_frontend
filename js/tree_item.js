@@ -48,8 +48,6 @@ class Treeitem {
     jQuery('.choice').remove();
 
     // Draw choices
-    var maxHeight = -1;
-    
     this.choices.forEach((choice) => {
       var choiceDiv = jQuery('.choice-template').clone().removeClass('choice-template').addClass('choice');
       var choiceText = this.nl2br(choice.text);
@@ -60,6 +58,12 @@ class Treeitem {
     });
 
     // Adjust height of each div
+    var choiceBoxesHeights = jQuery('.choice').map(function() {
+      return $(this).height();
+    })
+
+    var maxHeight = Math.max.apply(null, choiceBoxesHeights);
+
     jQuery.each(jQuery('.choice'), function() {
       $(this).height(maxHeight);
     });

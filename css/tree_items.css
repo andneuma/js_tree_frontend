@@ -12,7 +12,7 @@
 }
 
 .choice:hover {
-  background-color: #9089ec;
+  background-color: rgba(199, 179, 201, 0.7);
   cursor: pointer;
 }
 

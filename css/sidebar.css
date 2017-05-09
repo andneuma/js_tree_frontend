@@ -1,4 +1,30 @@
+/* The side navigation menu */
 .sidebar {
-  border: 1px black solid;
-  border-radius: 5px;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  background-color: rgba(179, 192, 201, 0.7);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.25s; /* 0.5 second transition effect to slide in the sidebar */
+  border-right: 1px #B3C0C9 solid;
 }
+
+.history-item-heading {
+  background-color: rgba(199, 179, 201, 0.7);
+  border: 1px #C7B3C9 solid;
+}
+
+.history-item-text {
+  border: 1px #C7B3C9 solid;
+  border-top: 0px;
+}
+
+.history-item {
+  margin: 10px;
+  border: 0px;
+  transform: none;
+  overflow: hidden;
+}
+

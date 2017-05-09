@@ -57,7 +57,7 @@ var treeItemRepo = new TreeItemRepository(data);
 
 jQuery(document).ready(function() {
   function addChoiceToSidebar(text, heading) {
-    jQuery('.sidebar').append('<div class="panel panel-default history-item"><div class="panel-heading history-item-heading">' + heading + '</div><div class="panel-body history-item-text">' + text + '</div></div>');
+    jQuery('.sidebar').append('<div class="panel history-item"><div class="panel-heading history-item-heading">' + heading + '</div><div class="panel-body history-item-text">' + text + '</div></div>');
   }
 
   // // Render next / previous items on click
