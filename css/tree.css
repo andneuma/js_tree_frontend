@@ -1,0 +1,8 @@
+/* Do not display reset / back buttons initially  */
+.content .back-button{
+  display: none;
+}
+
+.content .reset-button{
+  display: none;
+}

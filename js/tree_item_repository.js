@@ -11,6 +11,7 @@ class TreeItemRepository{
     var firstItem = this.treeItems[firstItemId];
     this.currentItem = firstItem;
     this.currentItem.renderSelf();
+    jQuery('.sidebar .panel').remove();
   }
 
   goBack() {
@@ -18,6 +19,7 @@ class TreeItemRepository{
     this.currentItem = previousItem;
     this.currentItem.renderSelf();
     this.history.pop(previousItem);
+    jQuery('.sidebar .panel').last().remove();
   }
 
   // Fetch JSON from external ressource (makes no sense for static data)
