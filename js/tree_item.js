@@ -26,7 +26,12 @@ class Treeitem {
     return htmls.join("<br>");
   }
 
+  // Render tree item
   renderSelf() {
+    var delayTime = 50;
+    // Draw reset button
+    jQuery('.reset').hide().fadeIn(delayTime);
+
     // Draw statement
     var parentDiv = jQuery('.parent');
     var heading = this.nl2br(this.heading);
@@ -34,29 +39,29 @@ class Treeitem {
 
     parentDiv.find('.parent_heading').html(heading);
     parentDiv.find('.parent_text').html(statement);
+    parentDiv.hide().fadeIn(delayTime);
 
-    // Create div template
+    // Draw choices
     var choiceTemplate = jQuery('.choice-template');
-    jQuery('.choice').remove();
 
     // Remove all choices
-    // Draw choices
-    var nl2br = this.nl2br;
+    jQuery('.choice').remove();
 
-    this.choices.forEach(function(choice) {
+    // Draw choices
+    this.choices.forEach((choice) => {
       var choiceDiv = jQuery('.choice-template').clone().removeClass('choice-template').addClass('choice');
-      var choiceText = nl2br(choice.text);
+      var choiceText = this.nl2br(choice.text);
       choiceDiv.attr('next-item-id', choice.nextItemId);
       choiceDiv.find('.choice_text').html(choiceText);
-      choiceDiv.insertAfter(choiceTemplate).show();
+      choiceDiv.insertAfter(choiceTemplate).fadeIn(delayTime);
     });
 
-    // Hide elements
+    // Hide elements (template, buttons, etc.)
     choiceTemplate.hide();
     if (this.parents.length === 0) {
       jQuery('.back').hide();
     } else {
-      jQuery('.back').show();
+      jQuery('.back').fadeIn(delayTime);
     }
   }
 }
