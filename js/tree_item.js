@@ -48,12 +48,20 @@ class Treeitem {
     jQuery('.choice').remove();
 
     // Draw choices
+    var maxHeight = -1;
+    
     this.choices.forEach((choice) => {
       var choiceDiv = jQuery('.choice-template').clone().removeClass('choice-template').addClass('choice');
       var choiceText = this.nl2br(choice.text);
       choiceDiv.attr('next-item-id', choice.nextItemId);
-      choiceDiv.find('.choice_text').html(choiceText);
+      choiceDiv.find('.choice-text').html(choiceText);
       choiceDiv.insertAfter(choiceTemplate).fadeIn(delayTime);
+      maxHeight = choiceDiv.height() > maxHeight ? choiceDiv.height() : maxHeight;
+    });
+
+    // Adjust height of each div
+    jQuery.each(jQuery('.choice'), function() {
+      $(this).height(maxHeight);
     });
 
     // Hide elements (template, buttons, etc.)
