@@ -1,5 +1,13 @@
 .parent {
   margin-bottom: 40px;
+  /* width: 70%; */
+  /* left: 15%; */
+}
+
+.continue-button {
+  left: 50%;
+  position: relative;
+  margin-top: 10px;
 }
 
 .choice {
@@ -8,8 +16,8 @@
   border: 0.3em grey solid;
   padding: 10px;
   margin-top: 5px;
-  width: 70%;
-  left: 15%;
+  /* width: 70%; */
+  /* left: 15%; */
 }
 
 .choice:hover {
@@ -19,7 +27,7 @@
 
 .button-bar {
   margin-top: 20px;
-  width: 70%;
-  left: 15%;
   position: relative;
+  /* width: 70%; */
+  /* left: 15%; */
 }

@@ -14,12 +14,3 @@ function toggleSidebar() {
     jQuery('.toggle-sidebar').text('Bisherige Auswahl verstecken');
   }
 }
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-function openNav() {
-
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-
-}
