@@ -26,14 +26,21 @@
     <div class="sidebar text-center" id="sidebar">
     </div>
     <div class="container">
-      <div class="main-content" id="main-content">
+      <div class="header text-center toggleable" id="header">
         <h1>ActionFinder</h1>
-        <a class="toggle-sidebar" href="#" onclick="toggleSidebar()">Bisherige Auswahl zeigen</a>
+        <span class="control-button glyphicon glyphicon-circle-arrow-left back-button" data-toggle="tooltip" data-placement="bottom" data-title="Zurück">
+        </span>
+        <span class="control-button glyphicon glyphicon-menu-hamburger toggle-sidebar" onclick="toggleSidebar()"  data-toggle="tooltip" data-placement="bottom" data-title="pokwef">
+        </span>
+        <span class="control-button glyphicon glyphicon-refresh reset-button" data-toggle="tooltip" data-placement="bottom" data-title="Nochmal von vorn">
+        </span>
+      </div>
+      <div class="main-content toggleable" id="main-content">
         <div class="row">    
           <div class="col-xs-12 parent">
             <h3 class="parent_heading"></h3>
             <div class="parent_text"></div>
-            <button class='btn btn-default continue-button' type="button">Weiter</button>
+            <!-- <button class='btn btn&#45;default continue&#45;button' type="button">Weiter</button> -->
           </div>
         </div>
         <div class="row">
@@ -41,14 +48,6 @@
             <div class="col-xs-12 choice-template text-center">
               <div class="choice-text"></div>
             </div>
-          </div>
-        </div>
-        <div class="button-bar">
-          <div class="pull-left">
-            <button class='btn btn-default reset-button' type="button">Zum Anfang</button>
-          </div>
-          <div class="pull-right">
-            <button class='btn btn-default back-button' type="button">Zurück</button>
           </div>
         </div>
       </div>

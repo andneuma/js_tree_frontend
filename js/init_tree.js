@@ -56,10 +56,13 @@ var data = [
 var treeItemRepo = new TreeItemRepository(data);
 
 jQuery(document).ready(function() {
+  // Enable BS tooltips
+  $('[data-toggle="tooltip"]').tooltip();
+
   function addChoiceToSidebar(statement, heading, choice) {
     jQuery('.sidebar').
       append('<div class="panel history-item"><div class="panel-heading history-item-heading">' + heading
-          + '</div><div class="panel-body history-item-text">' + statement 
+          + '</div><div class="panel-body history-item-text">' + statement
           + '</div><div class="panel-footer history-item-choice">' + choice + '</div>');
   }
 

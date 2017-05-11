@@ -1,8 +1,24 @@
 /* Do not display reset / back buttons initially  */
-.content .back-button{
+.main-content .back-button{
   display: none;
 }
 
-.content .reset-button{
+.main-content .reset-button{
   display: none;
+}
+
+.main-content {
+  top: 100px;
+  position: relative;
+}
+
+.control-button {
+  font-size: large;
+  cursor: pointer;
+  margin: 15px;
+  color: #a4a4a4;
+}
+
+.control-button:hover {
+  color: black;
 }

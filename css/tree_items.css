@@ -1,7 +1,7 @@
 .parent {
   margin-bottom: 40px;
-  /* width: 70%; */
-  /* left: 15%; */
+  width: 80%;
+  left: 10%;
 }
 
 .continue-button {
@@ -16,18 +16,11 @@
   border: 0.3em grey solid;
   padding: 10px;
   margin-top: 5px;
-  /* width: 70%; */
-  /* left: 15%; */
+  width: 70%;
+  left: 15%;
 }
 
 .choice:hover {
   background-color: rgba(199, 179, 201, 0.7);
   cursor: pointer;
-}
-
-.button-bar {
-  margin-top: 20px;
-  position: relative;
-  /* width: 70%; */
-  /* left: 15%; */
 }
