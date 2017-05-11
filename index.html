@@ -23,16 +23,17 @@
     <title>JSON Tree loader</title>
   </head>
   <body>
-    <div class="sidebar text-center">
+    <div class="sidebar text-center" id="sidebar">
     </div>
-    <div class="main-content">
-      <div class="container">
+    <div class="container">
+      <div class="main-content" id="main-content">
         <h1>This is some fancy tree test</h1>
         <a class="toggle-sidebar" href="#" onclick="toggleSidebar()">Bisherige Auswahl zeigen</a>
         <div class="row">    
           <div class="col-xs-12 parent">
             <h3 class="parent_heading"></h3>
             <div class="parent_text"></div>
+            <button class='btn btn-default continue-button' type="button">Weiter</button>
           </div>
         </div>
         <div class="row">
@@ -42,16 +43,12 @@
             </div>
           </div>
         </div>
-        <div class="row">    
-          <div class="button-bar">
-            <div class="col-xs-6">
-              <button class='btn btn-default reset-button' type="button">Zum Anfang</button>
-            </div>
-            <div class="col-xs-6">
-              <div class="pull-right">
-                <button class='btn btn-default back-button' type="button">Zurück</button>
-              </div>
-            </div>
+        <div class="button-bar">
+          <div class="pull-left">
+            <button class='btn btn-default reset-button' type="button">Zum Anfang</button>
+          </div>
+          <div class="pull-right">
+            <button class='btn btn-default back-button' type="button">Zurück</button>
           </div>
         </div>
       </div>

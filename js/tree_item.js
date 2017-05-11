@@ -48,6 +48,7 @@ class Treeitem {
     jQuery('.choice').remove();
 
     // Draw choices
+    var maxHeight = -1;
     this.choices.forEach((choice) => {
       var choiceDiv = jQuery('.choice-template').clone().removeClass('choice-template').addClass('choice');
       var choiceText = this.nl2br(choice.text);

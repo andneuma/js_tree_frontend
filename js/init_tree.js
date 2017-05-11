@@ -1,7 +1,7 @@
 var data = [
 { "id": "0.1",
   "heading": "Playing",
-  "statement":"Playing with balls of wool.\r\n Fooled again thinking the dog likes me then cats take over the world so howl on top of tall thing or woops poop hanging from butt must get rid run run around house drag poop on floor maybe it comes off woops left brown marks on floor human slave clean lick butt now or have my breakfast spaghetti yarn.",
+  "statement":"Playing with balls of wool.\r\nFooled again thinking the dog likes me then cats take over the world so howl on top of tall thing or woops poop hanging from butt must get rid run run around house drag poop on floor maybe it comes off woops left brown marks on floor human slave clean lick butt now or have my breakfast spaghetti yarn. <a href='https://oijwef.de'> apoijf</a>",
   "parents":[],
   "choices": [
   {"text": "Mark territory. Meowwww my left donut is missing, as is my right, eat all the power cords so chase red laser dot but hopped up on catnip.", "nextItemId": "1.1"},
@@ -56,8 +56,11 @@ var data = [
 var treeItemRepo = new TreeItemRepository(data);
 
 jQuery(document).ready(function() {
-  function addChoiceToSidebar(text, heading) {
-    jQuery('.sidebar').append('<div class="panel history-item"><div class="panel-heading history-item-heading">' + heading + '</div><div class="panel-body history-item-text">' + text + '</div></div>');
+  function addChoiceToSidebar(statement, heading, choice) {
+    jQuery('.sidebar').
+      append('<div class="panel history-item"><div class="panel-heading history-item-heading">' + heading
+          + '</div><div class="panel-body history-item-text">' + statement 
+          + '</div><div class="panel-footer history-item-choice">' + choice + '</div>');
   }
 
   // // Render next / previous items on click
@@ -67,10 +70,11 @@ jQuery(document).ready(function() {
     var currentItem = treeItemRepo.currentItem;
     var choiceText = jQuery(this).text();
     var currentItemHeading = currentItem.heading;
+    var currentItemStatement= currentItem.statement;
     treeItemRepo.history.push(currentItem);
     treeItemRepo.currentItem = nextItem;
     nextItem.renderSelf();
-    addChoiceToSidebar(choiceText, currentItemHeading);
+    addChoiceToSidebar(currentItemStatement, currentItemHeading, choiceText);
   });
 
   jQuery('.back-button').on('click', function() {

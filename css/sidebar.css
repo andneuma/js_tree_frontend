@@ -1,5 +1,5 @@
 /* The side navigation menu */
-.sidebar {
+#sidebar {
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
@@ -11,8 +11,14 @@
   border-right: 1px #B3C0C9 solid;
 }
 
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main-content {
+  transition: margin-left .25s;
+  padding: 20px;
+}
+
 .history-item-heading {
-  background-color: rgba(199, 179, 201, 0.7);
+  background-color: #A1D490;
   border: 1px #C7B3C9 solid;
 }
 
@@ -21,8 +27,15 @@
   border-top: 0px;
 }
 
+.history-item-choice {
+  background-color: rgba(199, 179, 201, 0.7);
+  border: 1px #C7B3C9 solid;
+  border-top: 0px;
+}
+
 .history-item {
   margin: 10px;
+  margin-bottom: 20px;
   border: 0px;
   transform: none;
   overflow: hidden;
