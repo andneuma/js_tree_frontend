@@ -66,7 +66,8 @@ jQuery(document).ready(function() {
           + '</div><div class="panel-footer history-item-choice">' + choice + '</div>');
   }
 
-  // // Render next / previous items on click
+
+  // Render next / previous items on click
   jQuery('.choices').on('click', '.choice', function() {
     var nextItemId = jQuery(this).attr('next-item-id');
     var nextItem = treeItemRepo.treeItems[nextItemId];
@@ -74,21 +75,32 @@ jQuery(document).ready(function() {
     var choiceText = jQuery(this).text();
     var currentItemHeading = currentItem.heading;
     var currentItemStatement= currentItem.statement;
+
     treeItemRepo.history.push(currentItem);
     treeItemRepo.currentItem = nextItem;
     nextItem.renderSelf();
     addChoiceToSidebar(currentItemStatement, currentItemHeading, choiceText);
+
+    // Draw other elements
+    showControlElements();
   });
 
   jQuery('.back-button').on('click', function() {
-    var history = treeItemRepo.history;
-    if (history.length > 0) {
+    if (treeItemRepo.history.length > 0) {
       treeItemRepo.goBack();
+    }
+  });
+
+  jQuery('.toggle-sidebar').on('click', function() {
+    if (treeItemRepo.history.length > 0) {
+      toggleSidebar();
     }
   });
 
   // Go back to start...
   jQuery('.reset-button').on('click', function() {
-    treeItemRepo.resetTree();
+    if (treeItemRepo.history.length > 0) {
+      treeItemRepo.resetTree();
+    }
   });
 });

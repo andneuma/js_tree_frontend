@@ -71,10 +71,5 @@ class Treeitem {
 
     // Hide elements (template, buttons, etc.)
     choiceTemplate.hide();
-    if (this.parents.length === 0) {
-      jQuery('.back').hide();
-    } else {
-      jQuery('.back').fadeIn(delayTime);
-    }
   }
 }

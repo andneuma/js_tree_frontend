@@ -11,7 +11,16 @@ class TreeItemRepository{
     var firstItem = this.treeItems[firstItemId];
     this.currentItem = firstItem;
     this.currentItem.renderSelf();
+
+    // Remove history
+    this.history = [];
+
+    // Clean sidepanel
     jQuery('.sidebar .panel').remove();
+    closeSidebar();
+
+    // Deactivate buttons
+    hideControlElements();
   }
 
   goBack() {
@@ -20,17 +29,11 @@ class TreeItemRepository{
     this.currentItem.renderSelf();
     this.history.pop(previousItem);
     jQuery('.sidebar .panel').last().remove();
-  }
 
-  // Fetch JSON from external ressource (makes no sense for static data)
-  fetchTreeItems() {
-    //TODO add http error handling remove unnessecarry object parsing
-    jQuery.get(this.treeItemsQuery, (data) => {
-      this.convertJsonToTreeItems(data);
-      this.createMeshNet();
-    }).fail(
-      () => {console.log('Request tget data failed')}
-      );
+    if (this.history.length === 0) {
+      closeSidebar();
+      hideControlElements();
+    }
   }
 
   // Serialise JSON data directly if ressource passed is already JSON
