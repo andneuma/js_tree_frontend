@@ -1,19 +1,40 @@
 class TreeItemRepository{
 	constructor(treeItemsQuery){
 		this.treeItemsQuery = treeItemsQuery;
-		this.treeItems = {}; // could be crazy new es6 Map type
-		this.fetchTreeItems();	
+		this.treeItems = {}; // could be crazy new es6 Map type		
+		// start rendering stuff when dom is ready and ajax call is processed
+		Promise.all([this.fetchTreeItems(),this.checkDomReady()])
+		.then(()=>{renderStuff()});	
+	}
+
+	checkDomReady(){
+		return new Promise(function(resolve, reject) {
+			if (document.readyState === 'complete') {
+				resolve(document);
+			} else {
+				document.addEventListener('DOMContentLoaded', function(){
+					resolve(document);
+				});
+			}
+		});
 	}
 
 	fetchTreeItems(){
 		//TODO add http error handling remove unnessecarry object parsing
-		jQuery.get(this.treeItemsQuery, (data) => {
-			this.convertJsonToTreeItems(data);
-			this.createMeshNet();
-			renderStuff();
-		}).fail(
-			() => {console.log('Request tget data failed')}
-			);
+		return fetch(this.treeItemsQuery.url)
+			.then((response)=>{
+				if (response.status !== 200) {  
+				console.log('Request tget data failed. Status Code: ' +  
+				  response.status);  
+				return;  
+				}
+				return response.json().then((data)=> {  
+				    // console.log(data);  
+					this.convertJsonToTreeItems(data);
+					this.createMeshNet();
+				  });  
+			});
+
 	}
 
 	convertJsonToTreeItems(rawJson){
@@ -23,7 +44,6 @@ class TreeItemRepository{
 				new Treeitem(jsonItem.id,jsonItem.text,jsonItem.children,jsonItem.parents);
 		});
 	}
-
 
 	createMeshNet() {
 
@@ -38,4 +58,8 @@ class TreeItemRepository{
 	findRelatedObjectById(ids) {
 		return ids.map((id) => { return this.treeItems[id] } );
 	}
+
 }
+
+
+
