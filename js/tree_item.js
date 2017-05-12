@@ -16,14 +16,7 @@ class Treeitem {
 
   // Text to HTML + replace \n in JSON with <br>s
   nl2br(text) {
-    var htmls = [];
-    var lines = text.split(/\n/);
-
-    var tmpDiv = jQuery(document.createElement('div'));
-    for (var i = 0 ; i < lines.length ; i++) {
-      htmls.push(tmpDiv.text(lines[i]).html());
-    }
-    return htmls.join("<br>");
+    return text.replace(new RegExp("\n", "g"), "<br>");
   }
 
   // Render tree item
@@ -34,11 +27,11 @@ class Treeitem {
 
     // Draw statement
     var parentDiv = jQuery('.parent');
-    // var heading = this.nl2br(this.heading);
-    // var statement = this.nl2br(this.statement);
+    var heading = this.nl2br(this.heading);
+    var statement = this.nl2br(this.statement);
 
-    parentDiv.find('.parent_heading').html(this.heading);
-    parentDiv.find('.parent_text').html(this.statement);
+    parentDiv.find('.parent_heading').html(heading);
+    parentDiv.find('.parent_text').html(statement);
     parentDiv.hide().fadeIn(delayTime);
 
     // Draw choices
