@@ -1,4 +1,4 @@
-var treeItemRepo = new TreeItemRepository({url: 'http://lpkb.menkent.uberspace.de/bring_it_on' })
+var treeItemRepo = new TreeItemRepository({url: 'https://cloud.coderat.cc/bring_it_on' })
 
 var renderStuff = function() {
 	jQuery('.parent').text(treeItemRepo.treeItems["0.1"].text);
