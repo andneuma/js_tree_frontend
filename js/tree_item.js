@@ -34,11 +34,11 @@ class Treeitem {
 
     // Draw statement
     var parentDiv = jQuery('.parent');
-    var heading = this.nl2br(this.heading);
-    var statement = this.nl2br(this.statement);
+    // var heading = this.nl2br(this.heading);
+    // var statement = this.nl2br(this.statement);
 
-    parentDiv.find('.parent_heading').html(heading);
-    parentDiv.find('.parent_text').html(statement);
+    parentDiv.find('.parent_heading').html(this.heading);
+    parentDiv.find('.parent_text').html(this.statement);
     parentDiv.hide().fadeIn(delayTime);
 
     // Draw choices
