@@ -10,7 +10,6 @@ function toggleSidebar() {
 }
 
 function closeSidebar() {
-  document.getElementById("sidebar").style.width = "0";
   document.getElementById("main-content").style.marginLeft = "0";
   document.getElementById("header").style.marginLeft = "0";
   jQuery('.sidebar').removeClass('open');
@@ -18,7 +17,6 @@ function closeSidebar() {
 }
 
 function openSidebar() {
-  document.getElementById("sidebar").style.width = "450";
   document.getElementById("main-content").style.marginLeft = "450";
   document.getElementById("header").style.marginLeft = "450";
   jQuery('.sidebar').addClass('open');

@@ -1,9 +1,8 @@
-/* Do not display reset / back buttons initially  */
 .main-content {
-  top: 100px;
   position: relative;
 }
 
+/* Control-Buttons  */
 .control-button {
   font-size: large;
   cursor: pointer;
@@ -22,4 +21,49 @@
 .tooltip-inner {
   font-size: 14px;
   background: #a4a4a4;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  font-size: 14px;
+  border-bottom-color: #a4a4a4;
+}
+
+/* Sidebar  */
+#sidebar {
+  padding-top: 70px;
+}
+
+@media (min-width: 480px) {
+  #sidebar.open {
+    width: 450px;
+  }
+}
+
+@media (max-width: 576px) {
+  #sidebar.open {
+    width: 320px;
+  }
+}
+
+#sidebar.closed {
+  width: 0;
+}
+
+.sidebar .sidebar-heading {
+  position: absolute;
+  width: 100%;
+  padding-left: 10px;
+  top: 15px;
+}
+
+.sidebar-heading .close-sidebar {
+  position: absolute;
+  right: 10px;
+  font-size: 24px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+.sidebar-heading .close-sidebar:hover {
+  color: #a4a4a4;
 }

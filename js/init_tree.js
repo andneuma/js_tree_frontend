@@ -88,4 +88,8 @@ jQuery(document).ready(function() {
       treeItemRepo.resetTree();
     }
   });
+
+  jQuery('.close-sidebar').on('click', function() {
+    closeSidebar();
+  });
 });
