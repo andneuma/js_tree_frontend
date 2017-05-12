@@ -59,45 +59,30 @@ jQuery(document).ready(function() {
   // Enable BS tooltips
   $('[data-toggle="tooltip"]').tooltip();
 
-  function addChoiceToSidebar(statement, heading, choice) {
-    jQuery('.sidebar').
-      append('<div class="panel history-item"><div class="panel-heading history-item-heading">' + heading
-          + '</div><div class="panel-body history-item-text">' + statement
-          + '</div><div class="panel-footer history-item-choice">' + choice + '</div>');
-  }
-
-
   // Render next / previous items on click
   jQuery('.choices').on('click', '.choice', function() {
     var nextItemId = jQuery(this).attr('next-item-id');
     var nextItem = treeItemRepo.treeItems[nextItemId];
-    var currentItem = treeItemRepo.currentItem;
-    var choiceText = jQuery(this).text();
-    var currentItemHeading = currentItem.heading;
-    var currentItemStatement= currentItem.statement;
+    var fromChoice = jQuery(this);
 
-    treeItemRepo.history.push(currentItem);
-    treeItemRepo.currentItem = nextItem;
-    nextItem.renderSelf();
-    addChoiceToSidebar(currentItemStatement, currentItemHeading, choiceText);
-
-    // Draw other elements
-    showControlElements();
+    treeItemRepo.goToItem(fromChoice, nextItem);
   });
 
+  // Back button
   jQuery('.back-button').on('click', function() {
     if (treeItemRepo.history.length > 0) {
       treeItemRepo.goBack();
     }
   });
 
+  // Sidebar button
   jQuery('.toggle-sidebar').on('click', function() {
     if (treeItemRepo.history.length > 0) {
       toggleSidebar();
     }
   });
 
-  // Go back to start...
+  // Reset button
   jQuery('.reset-button').on('click', function() {
     if (treeItemRepo.history.length > 0) {
       treeItemRepo.resetTree();

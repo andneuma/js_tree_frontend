@@ -36,6 +36,29 @@ class TreeItemRepository{
     }
   }
 
+
+  addChoiceToSidebar(statement, heading, choice) {
+    jQuery('.sidebar').
+      append('<div class="panel history-item"><div class="panel-heading history-item-heading">' + heading
+          + '</div><div class="panel-body history-item-text">' + statement
+          + '</div><div class="panel-footer history-item-choice">' + choice + '</div>');
+  }
+
+  goToItem(fromChoice, toItem) {
+    var currentItem = this.currentItem;
+    var choiceText = fromChoice.text();
+    var currentItemHeading = currentItem.heading;
+    var currentItemStatement= currentItem.statement;
+    this.addChoiceToSidebar(currentItemStatement, currentItemHeading, choiceText);
+
+    this.history.push(currentItem);
+    this.currentItem = toItem;
+    toItem.renderSelf();
+
+    // Draw other elements
+    showControlElements();
+  }
+
   // Serialise JSON data directly if ressource passed is already JSON
   serialiseDirectly(){
     this.convertJsonToTreeItems(this.rawData);
